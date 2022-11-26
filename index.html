@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eighth lesson</title>
+</head>
+
+<body>
+    <script>
+        var fruit = ['апельсин', 'банан', 'груша', 'яблоко', 'вишня'];
+
+        function forEach(fruit, callback) {
+            for (let index = 0; index < fruit.length; index++) {
+                callback(fruit.at(index), index, fruit);
+
+            }
+        }
+
+        function map(fruit, callback) {
+            var resultFruitOne = [];
+            for (let index = 0; index < fruit.length; index++) {
+                var result = callback(fruit.at(index), index, fruit);
+                resultFruitOne.push(result);
+            }
+            return resultFruitOne;
+        }
+
+        function filter(fruit, callback) {
+            var resultFruitSecond = [];
+            for (let index = 0; index < fruit.length; index++) {
+                var resultSecond = callback(fruit.at(index), index, fruit);
+                if (resultSecond) {
+                    resultFruitSecond.push(fruit.at(index));
+                }
+            }
+            return resultFruitSecond;
+        }
+
+        forEach(fruit, function (element, index, fruit) {
+            console.log(element + ' индекс' + ' №' + index + ' в' + ' цикле', fruit);
+        })
+
+        map(fruit, function (element) {
+            console.log(element + "_" + (element.length + 2 + 'шт'));
+        })
+
+        var selection = filter(fruit, function (element, index) {
+            if (element.length <= 5) {
+                return element;
+            }
+        });
+        console.log(selection);
+
+    </script>
+</body>
+
+</html>
